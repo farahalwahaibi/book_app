@@ -28,11 +28,11 @@ server.get( '/searches/new',( req,res )=>{
 } );
 
 server.post( '/searches',( req,res )=>{
-  let title = req.query.Search ;
-  let author = req.query.Author ;
+  let search = req.body.Search ;
+  let searchCat = req.body.searchCat;
   console.log( title, 'search' );
 
-  let url = `https://www.googleapis.com/books/v1/volumes?q=${title}`;
+  let url = `https://www.googleapis.com/books/v1/volumes?q=+in${searchCat}:${search}`;
   superagent.get( url )
     .then( booksData=>{
       console.log( 'books', booksData.body.items );
@@ -51,6 +51,9 @@ server.post( '/searches',( req,res )=>{
 //   res.send( './pages/searches/show' );
 } );
 
+server.get( '/error',( req,res )=>{
+  res.render( 'pages/error' );
+} );
 
 //Constructor:
 

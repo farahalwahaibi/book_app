@@ -58,7 +58,7 @@ function Book ( data ){
   this.title = data.volumeInfo.title ;
   this.authors = data.volumeInfo.authors ;
   this.description = data.volumeInfo.description ;
-  this.image = data.imageLinks ;
+  this.image = data.volumeInfo.imageLinks.thumbnail ;
   // globalArr.push(this);
 }
 

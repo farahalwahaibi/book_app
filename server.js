@@ -17,7 +17,6 @@ server.use( express.urlencoded( {extended:true} ) );
 const PORT = process.env.PORT || 3040;
 
 //Routes:
-
 server.get( '/hello',( req,res )=>{
   // res.send( 'home page' );
   res.render( 'pages/index' );
@@ -45,29 +44,29 @@ server.post( '/searches',( req,res )=>{
 
       console.log( dataArr,'dataarr' );
       res.render( 'pages/searches/show',{booksData:dataArr} );
+
+    } )
+    .catch( err=>{
+      res.render( 'pages/error',{error:err} );
     } );
 
 //   console.log( req.body );
 //   res.send( './pages/searches/show' );
 } );
 
-server.get( '/error',( req,res )=>{
-  res.render( 'pages/error' );
-} );
-
 //Constructor:
-
 function Book ( data ){
   this.title = data.volumeInfo.title ;
   this.authors = data.volumeInfo.authors ;
   this.description = data.volumeInfo.description ;
   this.image = data.volumeInfo.imageLinks.thumbnail ;
-  // globalArr.push(this);
 }
 
+server.get( '*',( req,res )=>{
+  res.render( 'pages/error' );
+} );
 
 server.listen( PORT,( req,res )=>{
   console.log( `listen on PORT ${PORT}` );
 } );
 
-// let globalArr = [];

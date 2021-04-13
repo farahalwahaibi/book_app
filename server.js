@@ -29,7 +29,7 @@ server.get( '/searches/new',( req,res )=>{
 
 server.post( '/searches',( req,res )=>{
   let title = req.body.Search ;
-  let searchCat = req.body.searchCat;
+  let searchCat = req.body.searchesCat;
   console.log( title, 'search' );
 
   let url = `https://www.googleapis.com/books/v1/volumes?q=+in${searchCat}:${title}`;

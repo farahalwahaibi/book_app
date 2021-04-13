@@ -16,6 +16,7 @@ body {
     text-align: center;
     margin: auto;
     font-size: 30px;
+    clear: both;
 }
 
 h1 {
@@ -78,10 +79,15 @@ h1 {
 .footer{
     background-color: rgb(0, 0, 0);
     width: 960px;
+    clear: both;
     height: 100px;
     color: white;
     text-align: center;
     margin: auto;
     font-size: 30px;
-    z-index: 1;
+    line-height: 100px;
+}
+
+.footer img {
+    padding: 0px 40px;
 }

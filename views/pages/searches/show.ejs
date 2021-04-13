@@ -5,17 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/base.css">
 </head>
 <body>
-    <ul>
+    <header class="header">
+        <h1>Enjoy!!!</h1>
+    </header>
+    <main>
+        <div class="href">
+            <a href="/hello">HOME</a>
+            <a href="./searches/new">SEARCH</a>
+        </div>
+    <div class="result">
         <% booksData.forEach((books)=>{ %> 
             <img src="<%= books.image%>" alt="https://i.imgur.com/J5LVHEL.jpg">
             <h2> <%= books.title %> </h2>
-            <h4> <%= books.authors %> </h4>
+            <h3> <%= books.authors %> </h3>
             <h4> <%= books.description %> </h4>
-
-            <!-- <li><%= books.title %></li> -->
         <% }) %> 
-    </ul>
+    </div>
+</main>
+<footer>
+    <div class="footer">
+        <a href=""><img src="./public/img/fb-icon.png" alt=""></a>
+        <a href=""><img src="./public/img/twit-icon.png" alt=""></a>
+        <a href=""><img src="./public/img/insta-icon.png" alt=""></a>
+        <a href=""><img src="./public/img/mail-icon.png" alt=""></a>
+    </div>
+</footer>
 </body>
 </html>

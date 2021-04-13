@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/base.css">
 </head>
 <body>
+    <header class="header">
+        <h1>Best Books!</h1>
+    </header>
+    <main>
+        <h2>Search by Title or Author</h2>
     <form action="/searches" method="POST">
-        <input type="text" name="Search" placeholder="Search">
+        <input type="text" name="Search" placeholder="Enter a title or author">
         <br>
         <input type="radio" name="searchesCat" value="titleOn">
         <label for="title">Title</label>
@@ -20,5 +27,14 @@
     </form>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="server.js"></script>
+</main>
+<footer>
+    <div class="footer">
+        <a href=""><img src="./public/img/fb-icon.png" alt=""></a>
+        <a href=""><img src="./public/img/twit-icon.png" alt=""></a>
+        <a href=""><img src="./public/img/insta-icon.png" alt=""></a>
+        <a href=""><img src="./public/img/mail-icon.png" alt=""></a>
+    </div>
+</footer>
 </body>
 </html>

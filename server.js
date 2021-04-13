@@ -28,11 +28,11 @@ server.get( '/searches/new',( req,res )=>{
 } );
 
 server.post( '/searches',( req,res )=>{
-  let search = req.body.Search ;
+  let title = req.body.Search ;
   let searchCat = req.body.searchCat;
   console.log( title, 'search' );
 
-  let url = `https://www.googleapis.com/books/v1/volumes?q=+in${searchCat}:${search}`;
+  let url = `https://www.googleapis.com/books/v1/volumes?q=+in${searchCat}:${title}`;
   superagent.get( url )
     .then( booksData=>{
       console.log( 'books', booksData.body.items );

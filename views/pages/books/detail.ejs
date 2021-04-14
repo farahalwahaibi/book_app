@@ -1,0 +1,11 @@
+
+<section>
+    <% detailsData.forEach(val=>{ %>
+        <img src="<%= val.image_url %>" alt="">
+        <h2> <%= val.title %> </h2>
+        <h3> <%= val.author %> </h>
+        <p> <%= val.description %> </p>
+        <!-- <h3> <%= val.isbn %> </h3> -->
+        <!-- <h3> <%= val.bookShelf %> </h3> -->
+    <% }) %>
+</section>

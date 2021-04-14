@@ -14,15 +14,16 @@
     </header>
     <main>
         <div class="href">
-            <a href="/hello">HOME</a>
+            <a href="/">HOME</a>
             <a href="./searches/new">SEARCH</a>
         </div>
     <div class="result">
         <% booksData.forEach((books)=>{ %> 
-            <img src="<%= books.image%>" alt="https://i.imgur.com/J5LVHEL.jpg">
+            <img src="<%= books.image_url %>" alt="https://i.imgur.com/J5LVHEL.jpg">
             <h2> <%= books.title %> </h2>
             <h3> <%= books.authors %> </h3>
             <h4> <%= books.description %> </h4>
+            <button><a href="/books">Select This Book</a></button>
         <% }) %> 
     </div>
 </main>

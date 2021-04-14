@@ -13,7 +13,14 @@
         <h1>Best Books</h1>
     </header>
     <main>
-        <%- include('./detail') %>
+        <section>
+            <% detailsData.forEach(val=>{ %>
+                <img src="<%= val.image_url %>" alt="">
+                <h2> <%= val.title %> </h2>
+                <h3> <%= val.author %> </h>
+                <p> <%= val.description %> </p>
+            <% }) %>
+        </section>
         <button><a href="/">Back To Library</a></button>
     </main>
     <footer>

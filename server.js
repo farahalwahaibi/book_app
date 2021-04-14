@@ -23,12 +23,6 @@ server.use( express.urlencoded( {extended:true} ) );
 
 const PORT = process.env.PORT || 3040;
 
-//Routes:
-// server.get( '/hello',( req,res )=>{
-//   // res.send( 'home page' );
-//   res.render( 'pages/index' );
-// } );
-
 server.get( '/',( req,res )=>{
   let SQL = 'SELECT * FROM books;';
   client.query( SQL )
@@ -59,44 +53,38 @@ server.post( '/searches',( req,res )=>{
         return newBook ;
       } );
       // res.send( dataArr );
-
       // console.log( dataArr,'dataarr' );
       res.render( 'pages/searches/show',{booksData:dataArr} );
-
     } )
     .catch( err=>{
       res.render( 'pages/error',{error:err} );
     } );
-
 //   console.log( req.body );
 //   res.send( './pages/searches/show' );
 } );
 
 server.post( '/books',( req,res )=>{ //insertNewBook into dataBase by click on select this book//
-  let {author, title, isbn, image_url, description} = req.body ;
-  let SQL = 'INSERT INTO books (author, title, isbn, image_url, description) VALUES ($1,$2,$3,$4,$5) RETURNING *;';
-  let safeValues = [author,title,isbn,image_url,description];
+  let {author, title, image_url, description} = req.body ;
+  // console.log(req.body);
+  let SQL = 'INSERT INTO books (author, title, image_url, description) VALUES ($1,$2,$3,$4) RETURNING id;';
+  let safeValues = [author,title,image_url,description];
   client.query( SQL,safeValues )
     .then( insertingData =>{
-      console.log( SQL,'sql' );
-      console.log( safeValues,'safe' );
-      console.log( insertingData,'insert' );
-      res.redirect( `/books/:${insertingData.rows[0].id}` );
-      console.log(insertingData);
-       ///ask TA??? return to index OR to detail///
-      // res.render( 'pages/index',{dataArr2:insertingData.rows} );  ///ask TA ??? return to index and render the whole data inside database + the new data which we insert it///
+      res.redirect( `/books/${insertingData.rows[0].id}` );
     } )
     .catch( err =>{
       res.render( 'pages/error',{error:err} );
     } );
 } );
 
-server.get( '/books/:id',( req,res )=>{ //on trello /books/:id//
-  let SQL = 'SELECT FROM books WHERE id=$1;';
+server.get( '/books/:id',( req,res )=>{ 
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
   let safeValues = [req.params.id];
+  console.log( req.params.id );
   client.query( SQL,safeValues )
     .then( bookDetails=>{
-      res.render( 'pages/books/show',{detailsData:bookDetails.rows[0]} );
+      console.log( bookDetails );
+      res.render( 'pages/books/detail',{detailsData:bookDetails.rows[0]} );
     } )
     .catch( err=>{
       res.render( 'pages/error',{error:err} );

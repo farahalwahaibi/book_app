@@ -14,17 +14,25 @@
     </header>
     <main>
         <div class="href">
-            <a href="/hello">HOME</a>
+            <a href="/">HOME</a>
             <a href="./searches/new">SEARCH</a>
         </div>
     <div class="result">
         <% booksData.forEach((books)=>{ %> 
-            <img src="<%= books.image%>" alt="https://i.imgur.com/J5LVHEL.jpg">
+            <img src="<%= books.image_url %>" alt="https://i.imgur.com/J5LVHEL.jpg">
             <h2> <%= books.title %> </h2>
             <h3> <%= books.authors %> </h3>
             <h4> <%= books.description %> </h4>
+            <form action="/books" method="POST" >
+                <input type="hidden" value="<%= books.image_url %>" name="image_url">
+                <input type="hidden" value="<%= books.title %>" name="title" > 
+                <input type="hidden" value="<%= books.authors %>" name="author">  
+                <input type="hidden" value="<%= books.description %>" name="description"> 
+                <input type="hidden" value="<% books.isbn %>" name="isbn">  
+                <button type="submit">Select This Book</button>
+        </form>
         <% }) %> 
-    </div>
+</div>
 </main>
 <footer>
     <div class="footer">

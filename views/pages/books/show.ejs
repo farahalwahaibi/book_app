@@ -10,29 +10,25 @@
 </head>
 <body>
     <header class="header">
-        <h1>Hello World!</h1>
+        <h1>Best Books</h1>
     </header>
     <main>
-        <div class="href">
-        <a href="/">HOME</a>
-        <a href="./searches/new">SEARCH</a>
-        </div>
-        <br>
         <section>
-            <% dataArr.forEach(val=>{ %>
+            <% detailsData.forEach(val=>{ %>
                 <img src="<%= val.image_url %>" alt="">
                 <h2> <%= val.title %> </h2>
                 <h3> <%= val.author %> </h>
-                <button><a href="/books/<%=val.id %>">View Details</a></button>
-           <% }) %>
+                <p> <%= val.description %> </p>
+            <% }) %>
         </section>
+        <button><a href="/">Back To Library</a></button>
     </main>
     <footer>
         <div class="footer">
             <a href=""><img src="/img/fb-icon.png" alt=""></a>
-            <a href=""><img src="/img/twit-icon.png" alt=""></a>
-            <a href=""><img src="/img/insta-icon.png" alt=""></a>
-            <a href=""><img src="/img/mail-icon.png" alt=""></a>
+                <a href=""><img src="/img/twit-icon.png" alt=""></a>
+                <a href=""><img src="/img/insta-icon.png" alt=""></a>
+                <a href=""><img src="/img/mail-icon.png" alt=""></a>
         </div>
     </footer>
 </body>

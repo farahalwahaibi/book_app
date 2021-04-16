@@ -10,6 +10,8 @@ const superagent = require( 'superagent' );
 
 const pg = require( 'pg' );
 
+const methodOverride = require( 'method-override' );
+
 const client = new pg.Client( {
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.DEV_MODE ? false : { rejectUnauthorized: false },
@@ -20,6 +22,8 @@ server.set( 'view engine','ejs' );
 server.use( express.static( './public' ) );
 
 server.use( express.urlencoded( {extended:true} ) );
+
+server.use( methodOverride( '_method' ) );
 
 const PORT = process.env.PORT || 3040;
 
@@ -77,7 +81,7 @@ server.post( '/books',( req,res )=>{ //insertNewBook into dataBase by click on s
     } );
 } );
 
-server.get( '/books/:id',( req,res )=>{ 
+server.get( '/books/:id',( req,res )=>{
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   let safeValues = [req.params.id];
   console.log( req.params.id );
@@ -89,6 +93,24 @@ server.get( '/books/:id',( req,res )=>{
     .catch( err=>{
       res.render( 'pages/error',{error:err} );
     } );
+} );
+
+server.put( '/update/:id',( req,res )=> {
+  let {author, title, image_url, description} = req.body;
+  let SQL = 'UPDATE books SET author=$1,title=$2,image_url=$3,description=$4,id=$5;' ;
+  let safeValues = [author, title, image_url, description, req.params.id];
+  console.log( SQL,safeValues );
+  client.query( SQL,safeValues )
+    .then( ()=>{
+      res.redirect( `/books/${req.params.id}` );
+    } );
+} );
+
+server.delete( '/delete/:id',( req,res )=>{
+  let SQL = 'DELETE FROM books WHERE id=$1;' ;
+  let safeValues = [req.params.id];
+  client.query( SQL,safeValues )
+    .then( res.redirect( '/' ) );
 } );
 
 //Constructor:

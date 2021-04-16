@@ -36,6 +36,8 @@ h1 {
 .href a {
     line-height: 100px;
     padding:50px;
+    text-decoration: none;
+    color: black;
 }
 
 .result {
@@ -48,8 +50,9 @@ h1 {
     padding: 10px;
     background-color: rgb(47, 44, 44);
     margin: 20px 210px;
-    width: 25%;
-    height: 40%;
+    width: 15%;
+    /* height: 30%;  */
+    object-fit: fill;
 }
 
 .result h2 {
@@ -74,6 +77,17 @@ h1 {
     color: white;
     width: 50%;
     margin: 0 210px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
 }
 
 .footer{

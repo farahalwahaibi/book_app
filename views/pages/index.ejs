@@ -18,11 +18,12 @@
         <a href="./searches/new">SEARCH</a>
         </div>
         <br>
-        <section>
+        <section class="result">
             <% dataArr.forEach(val=>{ %>
                 <img src="<%= val.image_url %>" alt="">
                 <h2> <%= val.title %> </h2>
                 <h3> <%= val.author %> </h>
+                    <br>
                 <button><a href="/books/<%=val.id %>">View Details</a></button>
            <% }) %>
         </section>

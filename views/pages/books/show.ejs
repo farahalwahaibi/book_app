@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/base.css">
-</head>
-<body>
-    <header class="header">
-        <h1>Best Books</h1>
-    </header>
-    <main>
+
         <section>
             <% detailsData.forEach(val=>{ %>
                 <img src="<%= val.image_url %>" alt="">
@@ -21,15 +7,4 @@
                 <p> <%= val.description %> </p>
             <% }) %>
         </section>
-        <button><a href="/">Back To Library</a></button>
-    </main>
-    <footer>
-        <div class="footer">
-            <a href=""><img src="/img/fb-icon.png" alt=""></a>
-                <a href=""><img src="/img/twit-icon.png" alt=""></a>
-                <a href=""><img src="/img/insta-icon.png" alt=""></a>
-                <a href=""><img src="/img/mail-icon.png" alt=""></a>
-        </div>
-    </footer>
-</body>
-</html>
+       
